@@ -1,9 +1,73 @@
-# Text-Editor-GUI
-This is a basic text editor created with the Tkinter library in Python.
-It provides a user-friendly interface for entering and editing text. 
-The editor allows users to type characters using their keyboard, and the characters are displayed in a text input field. 
-The cursor indicates the current position in the text. 
-Users can move the cursor left or right using the arrow keys, and they can delete characters using the backspace key. 
-The text is stored internally as a linked list, where each character is represented by a node. 
-Inserting a character adds a new node at the cursor position, while deleting a character removes the node at the cursor position. 
-The editor provides a simple yet functional way to interactively edit text.
+# Basic GUI-Text-Editor using Tkinter library in Python
+
+### How to Use ?
+
+```bash
+git clone https://github.com/Hemanthsp999/Text-Editor-GUI.git
+
+cd Text-Editor-GUI
+```
+
+### Install Tkinter
+
+For Windows, Open command prompt and run :
+
+```bash
+pip install tk
+```
+
+For MacOS, Open a terminal and run :
+
+```bash
+brew install tcl-tk
+```
+
+For Linux, Open a terminal and run :
+
+```bash
+sudo apt-get update
+sudo apt-get install python3-tk
+```
+
+Verify Installation by running this script and save it as <b>"test_tkinter.py"</b> :
+
+```bash
+import tkinter as tk
+
+root = tk.Tk()
+root.title("Test Tkinter")
+root.geometry("300x200")
+
+label = tk.Label(root, text="Hello, Tkinter!")
+label.pack(pady=20)
+
+root.mainloop()
+```
+
+run the script :
+
+```bash
+python3 test_tkinter.py
+```
+
+### After Installation, run the project:
+
+```bash
+python3 text.py
+```
+
+Text Editor
+
+![GitHub Image](images/textEditor.png)
+
+writing swap program in c
+
+![GitHub Image](images/text.png)
+
+save the program
+
+![GitHub Image](images/save.png)
+
+program output
+
+![GitHub Image](images/result.png)

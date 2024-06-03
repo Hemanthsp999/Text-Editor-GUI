@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog, messagebox
 
 
 class Node:
@@ -20,6 +21,19 @@ class TextEditorGUI:
         # Create the text input field
         self.text_input = tk.Text(self.root)
         self.text_input.pack()
+
+        # save and load
+        self.save_button = tk.Button(
+            self.root, text="Save", command=self.save_file)
+        self.save_button.pack(side=tk.LEFT)
+
+        self.load_button = tk.Button(
+            self.root, text="Load", command=self.load_file)
+        self.load_button.pack(side=tk.LEFT)
+
+        self.exit_button = tk.Button(
+            self.root, text="Exit", command=self.exit_file)
+        self.exit_button.pack(side=tk.LEFT)
 
         # Bind key events to their respective functions
         self.text_input.bind('<Key>', self.handle_keypress)
@@ -81,6 +95,42 @@ class TextEditorGUI:
         while current.next != self.cursor:
             current = current.next
         return current
+
+    def save_file(self):
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt",
+                                                 filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            try:
+                with open(file_path, 'w') as file:
+                    current = self.head
+                    while current:
+                        file.write(current.data)
+                        current = current.next
+                messagebox.showinfo("Success", "File saved successfully.")
+            except Exception as e:
+                messagebox.showerror(
+                    "Error", f"An error occurred while saving the file: {e}")
+
+    def load_file(self):
+        file_path = filedialog.askopenfilename(
+            filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            try:
+                with open(file_path, 'r') as file:
+                    self.head = None
+                    self.tail = None
+                    self.cursor = None
+                    text = file.read()
+                    for char in text:
+                        self.insert_character(char)
+                    self.update_text_widget()
+                messagebox.showinfo("Success", "File loaded successfully.")
+            except Exception as e:
+                messagebox.showerror(
+                    "Error", f"An error occurred while loading the file: {e}")
+
+    def exit_file(self):
+        self.root.destroy()
 
     def run(self):
         self.root.mainloop()
