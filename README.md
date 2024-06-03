@@ -58,7 +58,7 @@ python3 text.py
 
 Text Editor
 
-![GitHub Image](images/textEditor.png)
+![GitHub Image](images/TextEditor.png)
 
 writing swap program in c
 
